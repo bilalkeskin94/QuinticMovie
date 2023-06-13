@@ -12,6 +12,9 @@
 import { onMounted } from 'vue';
 import { defineStore } from 'pinia';
 
+const runtimeConfig = useRuntimeConfig();
+const { apiSecret } = runtimeConfig.public;
+
 const props = defineProps({
 	routeName: { type: String, required: true },
 	apiUrl: { type: String, required: true },
@@ -25,7 +28,7 @@ const useItemsStore = defineStore({
 	actions: {
 		async fetchItems() {
 			const response = await fetch(props.apiUrl, {
-				headers: { Authorization: 'Bearer DvNgbIM8w17cH1R7ww0C' },
+				headers: { Authorization: `Bearer ${apiSecret}` },
 			});
 			const data = await response.json();
 			this.items = data.docs;

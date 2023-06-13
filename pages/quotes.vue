@@ -7,6 +7,9 @@
 </template>
 
 <script setup>
+const runtimeConfig = useRuntimeConfig();
+const { baseURL, apiSecret } = runtimeConfig.public;
+
 const useQuotesStore = defineStore({
 	id: 'quotes',
 	state: () => ({
@@ -14,8 +17,8 @@ const useQuotesStore = defineStore({
 	}),
 	actions: {
 		async fetchQuotes() {
-			const response = await fetch('https://the-one-api.dev/v2/quote/', {
-				headers: { Authorization: 'Bearer DvNgbIM8w17cH1R7ww0C' },
+			const response = await fetch(`${baseURL}/quote`, {
+				headers: { Authorization: `Bearer ${apiSecret}` },
 			});
 			const data = await response.json();
 			this.quotes = data.docs;

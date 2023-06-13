@@ -10,7 +10,9 @@ export default defineNuxtConfig({
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 	runtimeConfig: {
-		baseURL: 'https://the-one-api.dev/v2',
-		apiSecret: process.env.VUE_APP_API_KEY,
+		public: {
+			baseURL: process.env.BASE_URL || 'https://the-one-api.dev/v2',
+			apiSecret: process.env.NUXT_ENV_API_KEY || '',
+		},
 	},
 });

@@ -15,6 +15,9 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
+const runtimeConfig = useRuntimeConfig();
+
+const { baseURL, apiSecret } = runtimeConfig.public;
 
 const useChaptersStore = defineStore({
 	id: 'chapters',
@@ -23,8 +26,8 @@ const useChaptersStore = defineStore({
 	}),
 	actions: {
 		async fetchChapters() {
-			const response = await fetch('https://the-one-api.dev/v2/chapter/', {
-				headers: { Authorization: 'Bearer DvNgbIM8w17cH1R7ww0C' },
+			const response = await fetch(`${baseURL}/chapter`, {
+				headers: { Authorization: `Bearer ${apiSecret}` },
 			});
 			const data = await response.json();
 			this.chapters = data.docs;
@@ -39,8 +42,8 @@ const useBooksStore = defineStore({
 	}),
 	actions: {
 		async fetchBooks() {
-			const response = await fetch('https://the-one-api.dev/v2/book/', {
-				headers: { Authorization: 'Bearer DvNgbIM8w17cH1R7ww0C' },
+			const response = await fetch(`${baseURL}/book`, {
+				headers: { Authorization: `Bearer ${apiSecret}` },
 			});
 			const data = await response.json();
 			this.books = data.docs;

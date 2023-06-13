@@ -8,6 +8,9 @@
 <script setup>
 import { defineStore } from 'pinia';
 import { useRoute } from 'vue-router';
+const runtimeConfig = useRuntimeConfig();
+
+const { baseURL, apiSecret } = runtimeConfig.public;
 
 const useItemStore = defineStore({
 	id: 'item',
@@ -16,8 +19,8 @@ const useItemStore = defineStore({
 	}),
 	actions: {
 		async fetchItem(type, id) {
-			const response = await fetch(`https://the-one-api.dev/v2/${type}/${id}`, {
-				headers: { Authorization: 'Bearer DvNgbIM8w17cH1R7ww0C' },
+			const response = await fetch(`${baseURL}${type}/${id}`, {
+				headers: { Authorization: `Bearer ${apiSecret}` },
 			});
 			const data = await response.json();
 			this.item = data.docs[0];

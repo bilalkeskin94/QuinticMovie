@@ -20,6 +20,10 @@
 </template>
 
 <script setup>
+const runtimeConfig = useRuntimeConfig();
+
+const { baseURL, apiSecret } = runtimeConfig.public;
+console.log(baseURL);
 const useCharactersStore = defineStore({
 	id: 'characters',
 	state: () => ({
@@ -31,11 +35,12 @@ const useCharactersStore = defineStore({
 	actions: {
 		async fetchCharacters() {
 			const response = await fetch(
-				`https://the-one-api.dev/v2/character/?page=${this.page}&limit=20`,
+				`${baseURL}character/?page=${this.page}&limit=20`,
 				{
-					headers: { Authorization: 'Bearer DvNgbIM8w17cH1R7ww0C' },
+					headers: { Authorization: `Bearer ${apiSecret}` },
 				}
 			);
+			console.log(response);
 			const data = await response.json();
 			this.characters = data.docs;
 			this.totalPages = Math.ceil(data.total / 20);
