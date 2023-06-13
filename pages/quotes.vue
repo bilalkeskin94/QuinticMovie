@@ -7,8 +7,6 @@
 </template>
 
 <script setup>
-import { defineStore } from 'pinia';
-
 const useQuotesStore = defineStore({
 	id: 'quotes',
 	state: () => ({

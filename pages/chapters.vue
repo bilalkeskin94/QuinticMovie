@@ -15,7 +15,6 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { defineStore } from 'pinia';
 
 const useChaptersStore = defineStore({
 	id: 'chapters',

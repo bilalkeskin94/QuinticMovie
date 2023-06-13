@@ -5,6 +5,10 @@
 			placeholder="Search for a character..."
 			route="character"
 		/>
+		<select v-model="store.sortOrder" @change="store.sortCharacters">
+			<option value="asc">Ascending</option>
+			<option value="desc">Descending</option>
+		</select>
 		<div v-if="store.totalPages > 1">
 			<button @click="prevPage" :disabled="store.page === 1">Previous</button>
 			<span>Page {{ store.page }} of {{ store.totalPages }}</span>
@@ -16,15 +20,13 @@
 </template>
 
 <script setup>
-import { defineStore } from 'pinia';
-import SearchInput from '../components/SearchInput.vue';
-
 const useCharactersStore = defineStore({
 	id: 'characters',
 	state: () => ({
 		characters: [],
 		page: 1,
 		totalPages: 0,
+		sortOrder: 'asc',
 	}),
 	actions: {
 		async fetchCharacters() {
@@ -49,6 +51,21 @@ const useCharactersStore = defineStore({
 				this.page--;
 				this.fetchCharacters();
 			}
+		},
+		sortCharacters() {
+			this.characters.sort((a, b) => {
+				const nameA = a.name.toUpperCase();
+				const nameB = b.name.toUpperCase();
+				if (this.sortOrder === 'asc') {
+					if (nameA < nameB) return -1;
+					if (nameA > nameB) return 1;
+					return 0;
+				} else {
+					if (nameA > nameB) return -1;
+					if (nameA < nameB) return 1;
+					return 0;
+				}
+			});
 		},
 	},
 });
