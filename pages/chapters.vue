@@ -8,7 +8,7 @@
 		</select>
 
 		<div v-for="chapter in filteredChapters" :key="chapter._id">
-			{{ chapter.chapterName }}
+			<p class="d-flex">{{ chapter.chapterName }}</p>
 		</div>
 	</div>
 </template>

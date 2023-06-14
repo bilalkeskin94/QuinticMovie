@@ -1,0 +1,33 @@
+.navbar {
+	background-color: black;
+	padding: 10px;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px;
+	max-width: 100%;
+
+	.navbar-brand {
+		font-size: 1.5em;
+		font-weight: bold;
+		color: #fff;
+	}
+
+	.navbar-menu {
+		display: flex;
+		gap: 25px;
+
+		.navbar-link {
+			color: #fff;
+			margin-left: 15px;
+
+			&:hover {
+				color: lighten(#fff, 20%);
+			}
+		}
+	}
+}

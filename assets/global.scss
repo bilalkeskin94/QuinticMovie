@@ -1,5 +1,103 @@
+@import './navbar.scss';
+@import './search.scss';
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: black;
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+input {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 15px auto;
+	width: 50vh;
+	padding: 1rem;
+	border-radius: 20px;
+	border: none;
+	margin-bottom: 1rem;
+	background: #f5f5f5;
+	outline: none;
+	font-size: 16px;
+}
+
+span {
+	color: #fff;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+select {
+	padding: 1rem;
+	border-radius: 20px;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #f5f5f5;
+	outline: none;
+	font-size: 16px;
+	margin: 1rem auto;
+	appearance: none;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+	}
+}
+
+.d-flex {
+	margin: 1rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
+
+button {
+	border-radius: 8px;
+	padding: 10px;
+	border: none;
+	background-color: #f5f5f5;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+h1 {
+	font-size: 55px;
+	margin: 15px;
+}
+
+p {
+	font-size: 20px;
+	margin: 15px;
 }

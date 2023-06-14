@@ -3,6 +3,7 @@
 		<input type="text" v-model="searchTerm" :placeholder="placeholder" />
 		<div class="grid">
 			<nuxt-link
+				class="search-input"
 				v-for="item in filteredItems"
 				:key="item._id"
 				:to="`/${props.route}/${item._id}`"
@@ -30,30 +31,3 @@ const filteredItems = computed(() => {
 	);
 });
 </script>
-
-<style lang="scss">
-.grid {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-}
-
-.card {
-	border: 1px solid black;
-	padding: 1rem;
-	margin: 1rem;
-	flex: 1 1 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	min-height: 200px;
-	border-radius: 20px;
-}
-
-input {
-	width: 100%;
-	padding: 1rem;
-	border-radius: 20px;
-	border: 1px solid black;
-	margin-bottom: 1rem;
-}
-</style>

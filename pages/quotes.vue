@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<button @click="generateRandomQuote">Generate</button>
-		<div>{{ randomQuote.dialog }}</div>
+		<button class="d-flex" @click="generateRandomQuote">Generate</button>
+		<p class="d-flex">{{ randomQuote.dialog }}</p>
 	</div>
 </template>
 
