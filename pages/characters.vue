@@ -14,29 +14,15 @@
 
 <script setup>
 import useCharactersStore from '@/store/character';
-import useBooksStore from '@/store/book';
+
+const runtimeConfig = useRuntimeConfig();
+const { baseURL, apiSecret } = runtimeConfig.public;
 
 const characterStore = useCharactersStore();
-const bookStore = useBooksStore();
-
-const selectedBookId = ref('');
 
 onMounted(async () => {
-	await characterStore.fetchCharacters();
-	await bookStore.fetchBooks();
+	await characterStore.fetchCharacters(baseURL, apiSecret);
 });
 
 const characters = computed(() => characterStore.characters);
-
-const filteredCharacters = computed(() => {
-	if (selectedBookId.value) {
-		return (
-			characters.value?.filter(
-				(character) => character.book === selectedBookId.value
-			) ?? []
-		);
-	} else {
-		return [];
-	}
-});
 </script>

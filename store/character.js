@@ -7,9 +7,8 @@ const useCharactersStore = defineStore({
 		sortOrder: 'asc',
 	}),
 	actions: {
-		async fetchCharacters() {
+		async fetchCharacters(baseURL,apiSecret) {
 			const runtimeConfig = useRuntimeConfig();
-			const { baseURL, apiSecret } = runtimeConfig.public;
 
 			const response = await fetch(
 				`${baseURL}character/?page=${this.page}&limit=20`,

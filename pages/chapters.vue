@@ -26,8 +26,8 @@ const bookStore = useBooksStore();
 const selectedBookId = ref('');
 
 onMounted(async () => {
-	await chapterStore.fetchChapters();
-	await bookStore.fetchBooks();
+	await chapterStore.fetchChapters(baseURL, apiSecret);
+	await bookStore.fetchBooks(baseURL, apiSecret);
 });
 
 const books = computed(() => bookStore.books);
