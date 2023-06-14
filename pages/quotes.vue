@@ -57,10 +57,4 @@ const generateRandomQuote = () => {
 	const randomIndex = Math.floor(Math.random() * quotes.value.length);
 	randomQuote.value = quotes.value[randomIndex];
 };
-
-const bookName = computed(() => {
-	if (!randomQuote.value) return '';
-	const book = books.value.find((b) => b._id === randomQuote.value.book);
-	return book ? book.name : 'Unknown Book';
-});
 </script>
