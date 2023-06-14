@@ -4,8 +4,8 @@ const useChaptersStore = defineStore({
 		chapters: [],
 	}),
 	actions: {
-		async fetchChapters(apiUrl, apiSecret) {
-			const response = await fetch(apiUrl, {
+		async fetchChapters(baseURL,apiSecret) {
+			const response = await fetch(`${baseURL}/chapter`, {
 				headers: { Authorization: `Bearer ${apiSecret}` },
 			});
 			const data = await response.json();

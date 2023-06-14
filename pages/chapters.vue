@@ -14,9 +14,10 @@
 </template>
 
 <script setup>
-const runtimeConfig = useRuntimeConfig();
 import useChaptersStore from '@/store/chapter';
 import useBooksStore from '@/store/book';
+
+const runtimeConfig = useRuntimeConfig();
 
 const { baseURL, apiSecret } = runtimeConfig.public;
 
@@ -27,7 +28,7 @@ const selectedBookId = ref('');
 
 onMounted(async () => {
 	await chapterStore.fetchChapters(baseURL, apiSecret);
-	await bookStore.fetchBooks(baseURL, apiSecret);
+	await bookStore.fetchBooks(`${baseURL}/book`, apiSecret);
 });
 
 const books = computed(() => bookStore.books);
