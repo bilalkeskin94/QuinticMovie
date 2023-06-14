@@ -5,11 +5,11 @@ const useCharactersStore = defineStore({
 		page: 1,
 		totalPages: 0,
 		sortOrder: 'asc',
+		baseURL: process.env.BASE_URL,
+		apiSecret: process.env.NUXT_ENV_API_KEY,
 	}),
 	actions: {
 		async fetchCharacters(baseURL,apiSecret) {
-			const runtimeConfig = useRuntimeConfig();
-
 			const response = await fetch(
 				`${baseURL}character/?page=${this.page}&limit=20`,
 				{
@@ -23,13 +23,13 @@ const useCharactersStore = defineStore({
 		nextPage() {
 			if (this.page < this.totalPages) {
 				this.page++;
-				this.fetchCharacters();
+				this.fetchCharacters(this.baseURL,this.apiSecret);
 			}
 		},
 		prevPage() {
 			if (this.page > 1) {
 				this.page--;
-				this.fetchCharacters();
+				this.fetchCharacters(this.baseURL,this.apiSecret);
 			}
 		},
 		sortCharacters() {

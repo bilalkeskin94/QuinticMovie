@@ -9,12 +9,6 @@
 			>
 				<div class="card">
 					<div>{{ item.name }}</div>
-					<div>{{ item.race }}</div>
-					<div>{{ item.gender }}</div>
-					<div>{{ item.spouse }}</div>
-					<div>{{ item.birth }}</div>
-					<div>{{ item.death }}</div>
-					<div>{{ item.realm }}</div>
 				</div>
 			</nuxt-link>
 		</div>
@@ -31,7 +25,7 @@ const props = defineProps({
 const searchTerm = ref('');
 
 const filteredItems = computed(() => {
-	return props.items.filter((item) =>
+	return props.items?.filter((item) =>
 		item.name.toLowerCase().includes(searchTerm.value.toLowerCase())
 	);
 });
