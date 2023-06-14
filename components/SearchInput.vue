@@ -22,8 +22,6 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-
 const props = defineProps({
 	items: { type: Array, required: true },
 	placeholder: { type: String, required: false, default: 'Search...' },

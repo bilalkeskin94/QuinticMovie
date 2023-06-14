@@ -14,42 +14,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
 const runtimeConfig = useRuntimeConfig();
+import useChaptersStore from '@/store/chapter';
+import useBooksStore from '@/store/book';
 
 const { baseURL, apiSecret } = runtimeConfig.public;
-
-const useChaptersStore = defineStore({
-	id: 'chapters',
-	state: () => ({
-		chapters: [],
-	}),
-	actions: {
-		async fetchChapters() {
-			const response = await fetch(`${baseURL}/chapter`, {
-				headers: { Authorization: `Bearer ${apiSecret}` },
-			});
-			const data = await response.json();
-			this.chapters = data.docs;
-		},
-	},
-});
-
-const useBooksStore = defineStore({
-	id: 'books',
-	state: () => ({
-		books: [],
-	}),
-	actions: {
-		async fetchBooks() {
-			const response = await fetch(`${baseURL}/book`, {
-				headers: { Authorization: `Bearer ${apiSecret}` },
-			});
-			const data = await response.json();
-			this.books = data.docs;
-		},
-	},
-});
 
 const chapterStore = useChaptersStore();
 const bookStore = useBooksStore();
