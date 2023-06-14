@@ -1,63 +1,20 @@
-# Nuxt 3 Minimal Starter
+## Setup Direction
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+npm install or
+yarn install.
 
-## Setup
+npm run dev or
+yarn dev -o
 
-Make sure to install the dependencies:
+## Enviroment Creation
 
-```bash
-# npm
-npm install
+Create a .env file
 
-# pnpm
-pnpm install
+NUXT_ENV_API_KEY = "API_KEY"
+BASE_URL = "https://the-one-api.dev/v2/"
 
-# yarn
-yarn install
-```
+You can find the api key from https://the-one-api.dev/
 
-## Development Server
+## Live Url
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+https://imaginative-chebakia-1db8da.netlify.app/
